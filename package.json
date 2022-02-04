@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "scripts": {
-    "api-tests-prodution": "newman run tests/FAKE-API.postman_collection.json"
+    "api-tests-production": "newman run tests/FAKE-API.postman_collection.json"
   },
   "author": "Maycon Douglas",
   "dependencies": {
