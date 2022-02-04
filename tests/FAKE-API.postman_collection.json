@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "575cd463-79e4-4a6c-a1fc-85c137145b5d",
+		"name": "FAKE-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "__SETUP",
+			"item": [
+				{
+					"name": "ENVIRONMENT CONFIG",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('URL', 'https://jsonplaceholder.typicode.com')"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/todos",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"todos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/todos",
+			"item": [
+				{
+					"name": "listar um item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", ()=> {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									" const res = pm.response.json()\r",
+									"pm.test(\"Response body contain all keys\", ()=> {\r",
+									"    pm.expect(res).to.have.all.keys('userId','id', 'title', 'completed')\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/todos/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"todos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

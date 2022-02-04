@@ -1,0 +1,16 @@
+{
+  "name": "placeholder-postman-jenkins",
+  "version": "1.0.0",
+  "description": "Project for run tests with jenkins",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "api-tests-prodution": "newman run tests/FAKE-API.postman_collection"
+  },
+  "author": "Maycon Douglas",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^5.3.1"
+  }
+}
