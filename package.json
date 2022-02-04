@@ -6,10 +6,9 @@
     "test": "tests"
   },
   "scripts": {
-    "api-tests-prodution": "newman run tests/FAKE-API.postman_collection"
+    "api-tests-prodution": "newman run tests/FAKE-API.postman_collection.json"
   },
   "author": "Maycon Douglas",
-  "license": "ISC",
   "dependencies": {
     "newman": "^5.3.1"
   }
