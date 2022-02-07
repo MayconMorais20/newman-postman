@@ -51,8 +51,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 201 ok\", ()=> {\r",
-									"    pm.response.to.have.status(201);\r",
+									"pm.test(\"Status code is 200\", ()=> {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									" const res = pm.response.json()\r",
 									"pm.test(\"Response body contain all keys\", ()=> {\r",
