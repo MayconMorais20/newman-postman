@@ -1,6 +1,6 @@
 ## Installation
 
-Dillinger requires [Node.js](https://nodejs.org/) v10+ to run.
+[Node.js](https://nodejs.org/) v10+ Required to run.
 
 Install the dependencies
 
