@@ -1,0 +1,2997 @@
+{
+	"info": {
+		"_postman_id": "40033ed4-373b-41fd-86db-40eae83b31c9",
+		"name": "Rule",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "__SETUP TOKEN",
+			"item": [
+				{
+					"name": "SET TOKEN-UNAUTHORIZED",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-PORTAL}}/oauth/token?grant_type=password&username=teste12@mailinator.com&password=Neurotech@12&phoneNumber=null&redirect_uri=https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization",
+							"host": [
+								"{{RSK-PORTAL}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "teste12@mailinator.com"
+								},
+								{
+									"key": "password",
+									"value": "Neurotech@12"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "null"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET VALID TOKEN-CONTA2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-CONTA2', pm.response.json().access_token)\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-CONTA2', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "content-length",
+								"value": "0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\" Not;A Brand\";v=\"99\", \"Google Chrome\";v=\"97\", \"Chromium\";v=\"97\""
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "authorization",
+								"value": "Basic YjUyNzE3YzI4ZDk1NDFiMDg1OTI1YTNjMDQ0ZjQ5OTA6bnVsbA=="
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "source",
+								"value": "FRONT"
+							},
+							{
+								"key": "origin",
+								"value": "https://rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://rsk-portal-dsv.riskpack.com.br/"
+							},
+							{
+								"key": "accept-language",
+								"value": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "_ga=GA1.3.240716375.1641329645"
+							}
+						],
+						"url": {
+							"raw": "{{RSK-PORTAL}}/oauth/token?grant_type=password&username=conta2@mailinator.com&password=Neurotech@12&phoneNumber=null&redirect_uri=https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization",
+							"host": [
+								"{{RSK-PORTAL}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "conta2@mailinator.com"
+								},
+								{
+									"key": "password",
+									"value": "Neurotech@12"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "null"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET TOKEN-EXPIRED",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-EXPIRED', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-EXPIRED', \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50TmFtZSI6Ik5FVVJPVEVDSCIsInVzZXJfbmFtZSI6InN1cGVyQG5ldXJvdGVjaC5jb20uYnIiLCJkaXNwbGF5TmFtZSI6IlN1cGVyIGFkbWluIiwibWFpbkFjY291bnQiOjEsImFjY291bnRzIjpbIjk5IiwiNjgiLCIyNyIsIjEwMDAiLCIxOTEiLCIxNzUiLCIxNzAwIiwiMjQzIiwiMSIsIjIiLCIyMDEiLCIxNjgiLCIzIiwiNDQ0IiwiNCIsIjUiLCIxMjM0IiwiNzc3IiwiMTExMSIsIjgwMCIsIjUxIl0sInVzZXJJZCI6MSwiYXV0aG9yaXRpZXMiOlsiKiJdLCJzY29wZSI6WyJvcGVuaWQiXSwiZXhwIjoxNjQzMjQzOTYwLCJqdGkiOiIzNGEzMzY0MS05OTAxLTQ5NzYtODBhYS05OWFkOTc1MGJkMDUiLCJjbGllbnRfaWQiOiJiNTI3MTdjMjhkOTU0MWIwODU5MjVhM2MwNDRmNDk5MCIsInVzZXJUeXBlIjoiU1VQRVJfQURNSU4iLCJyb290QWNjb3VudCI6MX0.Zunwj05AypA21YxuIXn_161cNuy01OzM6_dcSvzTM4g-t5ZvOlnznasoYHhSC1dc-A7AwwYukOq6k-a21ViRlJrK6UBniDskWUVbc6Kjk253QiHTH_dxwXecTFij6vTh7OgWQifetsqr-xc_1l256sHp7-ceRKmfac_dc2GBbmeV0d3nxWECvDA6bapH1IlfsWJjcU984ki7Y9odJyGpxMbqypFnU1iZbW0GVQCWwrPj9FywkAdsoN64P3GMzde1Sie30NmVv_qOfKOHlPYwZfMdOjrVHaJ6bnyy8W4Z97dlQ4xA6dkqkfRA-yIBpXB-HJzwWBuWGgnkPEfiOltLpw\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/post",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET TOKEN-INVALID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-INVALID', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-INVALID', \"eyJ0eXAiOiJKV1\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/post",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET VALID TOKEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"    pm.environment.set('TOKEN', pm.response.json().access_token)\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "content-length",
+								"value": "0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\" Not;A Brand\";v=\"99\", \"Google Chrome\";v=\"97\", \"Chromium\";v=\"97\""
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "authorization",
+								"value": "Basic YjUyNzE3YzI4ZDk1NDFiMDg1OTI1YTNjMDQ0ZjQ5OTA6bnVsbA=="
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "source",
+								"value": "FRONT"
+							},
+							{
+								"key": "origin",
+								"value": "https://rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://rsk-portal-dsv.riskpack.com.br/"
+							},
+							{
+								"key": "accept-language",
+								"value": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "_ga=GA1.3.240716375.1641329645"
+							}
+						],
+						"url": {
+							"raw": "{{RSK-PORTAL}}/oauth/token?grant_type=password&username=super@neurotech.com.br&password=Riskpack@321&phoneNumber=null&redirect_uri=https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization",
+							"host": [
+								"{{RSK-PORTAL}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "super@neurotech.com.br"
+								},
+								{
+									"key": "password",
+									"value": "Riskpack@321"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "null"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET DATE TIME",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = new Date();\r",
+									"var dd = String(data.getDate()).padStart(2, '0');\r",
+									"var mm = String(data.getMonth() + 1).padStart(2, '0');\r",
+									"var yy = data.getFullYear();\r",
+									"dateTime = dd + '/' + mm + '/' + yy + ' ' +data.getHours() +':'+ data.getMinutes();\r",
+									"pm.environment.set('DATE-TIME', dateTime)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('DATE-TIME', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/post",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SET VALID TOKEN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"    pm.environment.set('TOKEN', pm.response.json().access_token)\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "content-length",
+								"value": "0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\" Not;A Brand\";v=\"99\", \"Google Chrome\";v=\"97\", \"Chromium\";v=\"97\""
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "authorization",
+								"value": "Basic YjUyNzE3YzI4ZDk1NDFiMDg1OTI1YTNjMDQ0ZjQ5OTA6bnVsbA=="
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "source",
+								"value": "FRONT"
+							},
+							{
+								"key": "origin",
+								"value": "https://rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://rsk-portal-dsv.riskpack.com.br/"
+							},
+							{
+								"key": "accept-language",
+								"value": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "_ga=GA1.3.240716375.1641329645"
+							}
+						],
+						"url": {
+							"raw": "{{RSK-PORTAL}}/oauth/token?grant_type=password&username=super@neurotech.com.br&password=Riskpack@321&phoneNumber=null&redirect_uri=https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization",
+							"host": [
+								"{{RSK-PORTAL}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "super@neurotech.com.br"
+								},
+								{
+									"key": "password",
+									"value": "Riskpack@321"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "null"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "api/v1/rules",
+			"item": [
+				{
+					"name": "[BILL-161] listar regras com sucesso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object}]\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-162] listar regras com sucesso diferente de neurotech",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test('retornar os dados das regras de bilhetagem', ()=>{\r",
+									"    pm.expect( (res.data).length > 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test('valor da chave \\'account\\' igual a 1', ()=>{\r",
+									"    pm.expect(res.data[0].account).equals(1)\r",
+									"})\r",
+									"\r",
+									"pm.test('exibir userCreation para account 1', ()=>{\r",
+									"    pm.expect(res.data[0].userCreation).not.empty\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-CONTA2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-163] listar regras com o parametro page",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object}]\",()=>{\r",
+									"    pm.expect((res.data).length == 1).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?page=1&size=1",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-164] listar regras com o parametro page invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 400\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'status' com valor: \" + status, ()=>{\r",
+									"    pm.expect(res.status).equals(status)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"const page = pm.collectionVariables.get(\"p-page\")\r",
+									"pm.test(\"Por favor preencher o campo 'page' apenas com valor númerico. Valor informado: \" + page,()=>{\r",
+									"    pm.expect(res.message).equals(\"Por favor preencher o campo 'page' apenas com valor númerico. Valor informado: \" + page)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-page\",\"INVALID\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?page={{p-page}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{p-page}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-165] listar regras com o parametro size",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"var size = pm.collectionVariables.get('size-value')\r",
+									"pm.test(\"chave 'data' com quantidade de \" + size + \" Objeto(s) ou quantidade 0 \",()=>{\r",
+									"    pm.expect((res.data).length == size || (res.data).length == 0).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set('size-value', 1)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?size={{size-value}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "{{size-value}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-166] listar regras com o parametro size invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 400\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'status' com valor: \" + status, ()=>{\r",
+									"    pm.expect(res.status).equals(status)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"const size = pm.collectionVariables.get(\"p-size\")\r",
+									"pm.test(\"Por favor preencher o campo 'size' apenas com valor númerico. Valor informado: \"+size ,()=>{\r",
+									"    pm.expect(res.message).equals(\"Por favor preencher o campo 'size' apenas com valor númerico. Valor informado: \"+size)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-size\",\"INVALID\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?size={{p-size}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "{{p-size}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-167] listar regras com o parametro sort",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: quatidade de itens maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"verificar funcionamento do paramentro sort pela chave 'dtCreation'\",()=>{\r",
+									"   if((res.data).length > 2){\r",
+									"       var newdate = new Date(res.data[0]['dtCreation'])\r",
+									"       var olddate = new Date(res.data[1]['dtCreation'])\r",
+									"       pm.expect(newdate >= olddate).equals(true)\r",
+									"   }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?sort=dtCreation",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "dtCreation"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-168] listar regras com o parametro sort invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 400\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'status' com valor: \" + status, ()=>{\r",
+									"    pm.expect(res.status).equals(status)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Valor do parâmetro 'sortBy' inválido, as opções disponíveis são: component, groupElement, consolidationType e dtCreation\",()=>{\r",
+									"    pm.expect(res.message).equals(\"Valor do parâmetro 'sortBy' inválido, as opções disponíveis são: component, groupElement, consolidationType e dtCreation\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?sort=INVALID",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "INVALID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-169] listar regras com o parametro direction ASC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test('response body content', ()=>{\r",
+									"    pm.expect(res['data'].length >  0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"verificar funcionamento do paramentro direction pela valor 'ASC'\",()=>{\r",
+									"   if((res.data).length > 2){\r",
+									"       var newdate = new Date(res.data[0]['dtCreation'])\r",
+									"       var olddate = new Date(res.data[1]['dtCreation'])\r",
+									"       pm.expect(newdate <= olddate).equals(true)\r",
+									"   }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?direction=ASC",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-170] listar regras com o parametro direction DESC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test('response body content', ()=>{\r",
+									"    pm.expect(res['data'].length >  0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"verificar funcionamento do paramentro direction pela valor 'ASC'\",()=>{\r",
+									"   if((res.data).length > 2){\r",
+									"       var newdate = new Date(res.data[0]['dtCreation'])\r",
+									"       var olddate = new Date(res.data[1]['dtCreation'])\r",
+									"       pm.expect(newdate >= olddate).equals(true)\r",
+									"   }\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?direction=DESC",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-171] listar regras com o parametro direction invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 400\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Valor invalido para o campo 'direction', esperado ASC ou DESC\",()=>{\r",
+									"    pm.expect(res.message).contains(\"Valor invalido para o campo 'direction', esperado ASC ou DESC\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?direction=INVALID",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "direction",
+									"value": "INVALID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-172] listar regras com o parametro endDate e startDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?startDate=2020-01-01 12:12:12&endDate=2022-02-01 12:12:12",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "2020-01-01 12:12:12"
+								},
+								{
+									"key": "endDate",
+									"value": "2022-02-01 12:12:12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-173] listar regras com o parametro endDate invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 400\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: Parâmetro endDate inválido, deve ser preenchido no formato yyyy-MM-dd HH:mm:ss\", ()=> {\r",
+									"    pm.expect(res.message).equals(\"Parâmetro 'endDate' inválido, deve ser preenchido no formato yyyy-MM-dd HH:mm:ss\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?endDate=INVALID",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "endDate",
+									"value": "INVALID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-174]  listar regras com o parametro startDate invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 400\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: Parâmetro 'startDate' inválido, deve ser preenchido no formato yyyy-MM-dd HH:mm:ss\", ()=> {\r",
+									"    pm.expect(res.message).equals(\"Parâmetro 'startDate' inválido, deve ser preenchido no formato yyyy-MM-dd HH:mm:ss\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?startDate=INVALID",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "startDate",
+									"value": "INVALID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-175] listar regras com o parametro component",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"const component = pm.collectionVariables.get(\"p-component\")\r",
+									"pm.test(\"Listar somente os componetes do \" + component, ()=>{\r",
+									"    let difComponent = false\r",
+									"    for(i = 0; i < res['data'].length; i++){\r",
+									"        console.log(res['data'][i]['component'])\r",
+									"        if (! res['data'][i]['component'] == component){\r",
+									"            difComponent = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(difComponent).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-component\",\"GTW\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?component={{p-component}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "component",
+									"value": "{{p-component}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-176] listar regras com o parametro component invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: igual a zero\", ()=>{\r",
+									"    pm.expect(res.total == 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: []\", ()=>{\r",
+									"    pm.expect((res.data).length == 0).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?component=INVALID",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "component",
+									"value": "INVALID"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-177] listar regras com o parametro groupElement",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"const groupElement = pm.collectionVariables.get('p-groupElement')\r",
+									"pm.test(\"Listar somente as regras com o parâmetro groupElement com valor que contenha a palavra: '\" + groupElement+\"'\", ()=>{\r",
+									"    let difgroupElement = false\r",
+									"    for(i = 0; i < res['data'].length; i++){\r",
+									"        console.log(res['data'][i]['groupElement'])\r",
+									"        if (! res['data'][i]['groupElement'].includes(groupElement)){\r",
+									"            difgroupElement = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(difgroupElement).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-groupElement\",\"QA\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?groupElement={{p-groupElement}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "groupElement",
+									"value": "{{p-groupElement}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-178] listar regras com o parametro groupElement inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: igual a zero\", ()=>{\r",
+									"    pm.expect(res.total == 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: []\", ()=>{\r",
+									"    pm.expect((res.data).length == 0).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?groupElement=INEXISTENTE",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "groupElement",
+									"value": "INEXISTENTE"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-179] listar regras com o parametro consolidationType com valor None",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"const consolidationType = pm.collectionVariables.get(\"p-consolidationType\")\r",
+									"pm.test(\"Listar somente as regras com o parâmetro consolidationType com valor: '\" + consolidationType+\"'\", ()=>{\r",
+									"    let difConsolidationType = false\r",
+									"    for(i = 0; i < res['data'].length; i++){\r",
+									"        console.log(res['data'][i]['gracePeriod'])\r",
+									"        if (res['data'][i]['gracePeriod'] >= 0){\r",
+									"            difConsolidationType = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(difConsolidationType).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-consolidationType\",\"None\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?consolidationType={{p-consolidationType}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "consolidationType",
+									"value": "{{p-consolidationType}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-182] listar regras com o parametro consolidationType invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 400\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\",()=>{\r",
+									"    pm.expect(res.error).equals('Bad Request')\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: Parâmetro consolidationType inválido, opções disponíveis: NONE, WITH_GRACE e NO_GRACE\", ()=> {\r",
+									"    pm.expect(res.message).equals(\"Parâmetro consolidationType inválido, opções disponíveis: NONE, WITH_GRACE e NO_GRACE\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-consolidationType\",\"INVALID\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?consolidationType={{p-consolidationType}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "consolidationType",
+									"value": "{{p-consolidationType}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-183] listar regras com o parametro userCreation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"const userCreation = pm.collectionVariables.get(\"p-userCreation\")\r",
+									"pm.test(\"Listar somente as regras com o parâmetro userCreation com valor: '\" + userCreation+\"'\", ()=>{\r",
+									"    let difUserCreation = false\r",
+									"    for(i = 0; i < res['data'].length; i++){\r",
+									"        console.log(res['data'][i]['userCreation'])\r",
+									"        if (! res['data'][i]['userCreation'] == userCreation){\r",
+									"            difUserCreation = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(difUserCreation).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-userCreation\",\"Elther\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?userCreation={{p-userCreation}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "userCreation",
+									"value": "{{p-userCreation}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-184] listar regras com o parametro userCreation inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"status code \"+ statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode)\r",
+									"})\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: igual a zero\", ()=>{\r",
+									"    pm.expect(res.total == 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: []\", ()=>{\r",
+									"    pm.expect((res.data).length == 0).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?userCreation=INEXISTENT",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "userCreation",
+									"value": "INEXISTENT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-185] listar regras com token sem autorização",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 401\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Acesso não autorizado'\", ()=>{\r",
+									"    pm.expect(res.error).equals(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Permissão negada'\", ()=>{\r",
+									"    pm.expect(res.message).equals(\"Permissão negada\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-UNAUTHORIZED}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?page=0&size=20&sort=dtCreation&direction=DESC",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "dtCreation"
+								},
+								{
+									"key": "direction",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-186] listar regras com token expirado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 401\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Acesso não autorizado'\", ()=>{\r",
+									"    pm.expect(res.error).equals(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Token expirado'\", ()=>{\r",
+									"    pm.expect(res.message).equals(\"Token expirado\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-EXPIRED}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?page=0&size=20&sort=dtCreation&direction=DESC",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "dtCreation"
+								},
+								{
+									"key": "direction",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-187] listar regras com token invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 400\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\", ()=>{\r",
+									"    pm.expect(res.error).equals(\"Bad Request\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Token invalido'\", ()=>{\r",
+									"    pm.expect(res.message).equals(\"Token invalido\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-INVALID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?page=0&size=20&sort=dtCreation&direction=DESC",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								},
+								{
+									"key": "sort",
+									"value": "dtCreation"
+								},
+								{
+									"key": "direction",
+									"value": "DESC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-188] listar regras com token vazio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 400\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\", ()=>{\r",
+									"    pm.expect(res.error).equals(\"Bad Request\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Token é obrigatorio'\", ()=>{\r",
+									"    pm.expect(res.message).equals(\"Token é obrigatorio\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-162] listar regras com sucesso para resposta sem  usuario quando rootAccout diferente de 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-CONTA2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-180] listar regras com o parametro consolidationType com valor WITH_GRACE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"const consolidationType = pm.collectionVariables.get(\"p-consolidationType\")\r",
+									"pm.test(\"Listar somente as regras com o parâmetro consolidationType com valor: '\" + consolidationType+\"'\", ()=>{\r",
+									"    let difConsolidationType = false\r",
+									"    for(i = 0; i < res['data'].length; i++){\r",
+									"        console.log(res['data'][i]['gracePeriod'])\r",
+									"        if (res['data'][i]['gracePeriod'] <= 0){\r",
+									"            difConsolidationType = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(difConsolidationType).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-consolidationType\",\"WITH_GRACE\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?consolidationType={{p-consolidationType}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "consolidationType",
+									"value": "{{p-consolidationType}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-181] listar regras com o parametro consolidationType com valor NO_GRACE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 200\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'total' com valor: maior ou igual a zero\", ()=>{\r",
+									"    pm.expect(res.total >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'data' com valor: [{Object},...] ou []\",()=>{\r",
+									"    pm.expect((res.data).length >= 0).equals(true)\r",
+									"})\r",
+									"\r",
+									"const consolidationType = pm.collectionVariables.get(\"p-consolidationType\")\r",
+									"pm.test(\"Listar somente as regras com o parâmetro consolidationType com valor: '\" + consolidationType+\"'\", ()=>{\r",
+									"    let difConsolidationType = false\r",
+									"    for(i = 0; i < res['data'].length; i++){\r",
+									"        console.log(res['data'][i]['gracePeriod'])\r",
+									"        if (res['data'][i]['gracePeriod'] != 0){\r",
+									"            difConsolidationType = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(difConsolidationType).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-consolidationType\",\"NO_GRACE\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules?consolidationType={{p-consolidationType}}",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "consolidationType",
+									"value": "{{p-consolidationType}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "api/v1/rules{ruleId}/versions",
+			"item": [
+				{
+					"name": "SETUP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"r-ruleId\",pm.response.json().data[0][\"id\"])\r",
+									"pm.test(\"*** SETUP CONCLUÍDO ***\",()=>{\r",
+									"    pm.expect(pm.collectionVariables.get(\"r-ruleId\")).not.equals(\"\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"r-ruleId\",\"\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-189] listar versões da regra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 200\r",
+									"pm.test(\"Status code é \" + statusCode, ()=>{\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"ruleId = pm.collectionVariables.get(\"r-ruleId\")\r",
+									"pm.test(\"lista somente items com ruleId \" + ruleId, ()=>{\r",
+									"    let error = false\r",
+									"    for (i = 0; i < (res[\"data\"]).length; i++){\r",
+									"        var id = res[\"data\"][i][\"id\"]\r",
+									"        if(id != ruleId){\r",
+									"            error = true\r",
+									"        }\r",
+									"    }\r",
+									"    pm.expect(error).to.be.false\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/{{r-ruleId}}/versions",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"{{r-ruleId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-190] listar versões da regra com ruleId inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 404\r",
+									"pm.test(\"Status code é \" + statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"const ruleId = pm.collectionVariables.get(\"p-ruleId\")\r",
+									"pm.test(\"chave 'error' com valor: Não encontrado\",()=>{\r",
+									"    pm.expect(res[\"error\"]).equals(\"Não encontrado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: ruleId \"+ ruleId +\" não localizado\",()=>{\r",
+									"    pm.expect(res[\"message\"]).equals(\"ruleId \"+ ruleId +\" não localizado\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"p-ruleId\",\"-1\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/{{p-ruleId}}/versions",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"{{p-ruleId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-191] listar versões da regra com token sem autorização",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 401\r",
+									"pm.test(\"Status code é \" + statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"pm.test(\"chave 'error' com valor: Acesso não autorizado\",()=>{\r",
+									"    pm.expect(res[\"error\"]).equals(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: Permissão negada\",()=>{\r",
+									"    pm.expect(res[\"message\"]).equals(\"Permissão negada\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-UNAUTHORIZED}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/{{r-ruleId}}/versions",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"{{r-ruleId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-192] listar versões da regra com token expirado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 401\r",
+									"pm.test(\"Status code é \" + statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"pm.test(\"chave 'error' com valor: Acesso não autorizado\",()=>{\r",
+									"    pm.expect(res[\"error\"]).equals(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: Token expirado\",()=>{\r",
+									"    pm.expect(res[\"message\"]).equals(\"Token expirado\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-EXPIRED}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/{{r-ruleId}}/versions",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"{{r-ruleId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-193] listar versões da regra com token invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const statusCode = 400\r",
+									"pm.test(\"Status code é \" + statusCode, ()=>{\r",
+									"    pm.response.to.have.status(statusCode);\r",
+									"});\r",
+									"\r",
+									"const res = pm.response.json()\r",
+									"pm.test(\"chave 'error' com valor: Bad Request\",()=>{\r",
+									"    pm.expect(res[\"error\"]).equals(\"Bad Request\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: Token invalido\",()=>{\r",
+									"    pm.expect(res[\"message\"]).equals(\"Token invalido\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-INVALID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/{{r-ruleId}}/versions",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"{{r-ruleId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[BILL-194] listar versões da regra com token vazio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var status = 400\r",
+									"pm.test(\"status code \" + status, ()=>{\r",
+									"    pm.response.to.have.status(status)\r",
+									"})\r",
+									"\r",
+									"var res = pm.response.json()\r",
+									"\r",
+									"pm.test(\"chave 'error' com valor: 'Bad Request'\", ()=>{\r",
+									"    pm.expect(res.error).equals(\"Bad Request\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Token é obrigatorio'\", ()=>{\r",
+									"    pm.expect(res.message).equals(\"Token é obrigatorio\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": " ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/{{r-ruleId}}/versions",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"{{r-ruleId}}",
+								"versions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "api/v1/rules/file",
+			"item": [
+				{
+					"name": "Download de regra ativa com token sem permissao",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// status da request esperado \r",
+									"const requestCodeTest = 401\r",
+									"pm.test(\"Status code \" + requestCodeTest, ()=>{\r",
+									"    pm.response.to.have.status(requestCodeTest)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ERROR\", ()=>{\r",
+									"    pm.expect(pm.response.json().error).contain(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Message\", ()=>{\r",
+									"    pm.expect(pm.response.json().message).contain(\"Não autorizado\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50TmFtZSI6IlFBQklMSEVUQUdFTSIsInVzZXJfbmFtZSI6InFhYmlsaGV0YWdlbUBtYWlsaW5hdG9yLmNvbSIsImRpc3BsYXlOYW1lIjoicWFiaWxoZXRhZ2VtIiwibWFpbkFjY291bnQiOjIwMjEsImFjY291bnRzIjpbIjIwMjEiXSwidXNlcklkIjozMTYsImF1dGhvcml0aWVzIjpbIioiXSwic2NvcGUiOlsib3BlbmlkIl0sImV4cCI6MTY0MjIwNTgwNiwianRpIjoiZjk2MjIxY2ItOWQxNy00NWY3LTgyZTktYTg0NmMzNjU1ZGE4IiwiY2xpZW50X2lkIjoiYjUyNzE3YzI4ZDk1NDFiMDg1OTI1YTNjMDQ0ZjQ5OTAiLCJ1c2VyVHlwZSI6IkFETUlOIiwicm9vdEFjY291bnQiOjIwMjF9.OC3siC2gAXFYWKFzkGB1yIU9dJpDZQ7Lss3Xj7D2Qs7uEUKl32O2oB8KWvHI02XoVL32gYc-YoJkzNIuz74CwWW0lvc3ZZCjpHGRw7XlpG1D9BSc7l0ASxjqgmL9EuBqRdnzZq6YMN0_VRmxCYeKAOOv71ocmuWXMTJDt0twx9dWYd3-SA0xqXTU0LtwLNSN5AERm-kqvBupN7Cuqkx_YoIlYS6n7M_mrdlBUaagHCYvmJap9xVz2gqfh-BamJQ9ws1L4tpGslWrlZe9Vv6Sfi9dcnbkC7AuGgt_qC5oXYCOlx4fBP1EGS30Rs10SAKidX0nd3ME95YLK5Il10RL_g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/file?account=1",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"file"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download de regra ativa com token expirado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// status da request esperado \r",
+									"const requestCodeTest = 403\r",
+									"pm.test(\"Status code \" + requestCodeTest, ()=>{\r",
+									"    pm.response.to.have.status(requestCodeTest)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"error\", ()=>{\r",
+									"    pm.expect(pm.response.json().error).contain(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"chave 'message' com valor: 'Token expirado'\", ()=>{\r",
+									"    pm.expect(pm.response.json().message).contain(\"Token expired\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-EXPIRED}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/file?account=1",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"file"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download de regra ativa com token invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// status da request esperado \r",
+									"const requestCodeTest = 401\r",
+									"pm.test(\"Status code \" + requestCodeTest, ()=>{\r",
+									"    pm.response.to.have.status(requestCodeTest)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"error\", ()=>{\r",
+									"    pm.expect(pm.response.json().error).contain(\"Acesso não autorizado\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"message\", ()=>{\r",
+									"    pm.expect(pm.response.json().message).contain(\"Acesso não autorizado. Token inválido.\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN-INVALID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/file?account=1",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"file"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download de regra ativa com token  valido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// status da request esperado \r",
+									"const requestCodeTest = 200\r",
+									"pm.test(\"Status code \" + requestCodeTest, ()=>{\r",
+									"    pm.response.to.have.status(requestCodeTest)\r",
+									"})\r",
+									"pm.test(\"exists base64\", ()=>{\r",
+									"    pm.expect(pm.response.json().base64).not.empty\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/file?account=1",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"file"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download de regra ativa com token  vazio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// status da request esperado \r",
+									"const requestCodeTest = 400\r",
+									"pm.test(\"Status code \" + requestCodeTest, ()=>{\r",
+									"    pm.response.to.have.status(requestCodeTest)\r",
+									"})\r",
+									"pm.test(\"Bad Request\", ()=>{\r",
+									"    pm.expect(pm.response.json().error).contains(\"Bad Request\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{RSK-BILHETAGEM}}/api/v1/rules/file?account=1",
+							"host": [
+								"{{RSK-BILHETAGEM}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"rules",
+								"file"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "size-value",
+			"value": ""
+		},
+		{
+			"key": "p-component",
+			"value": ""
+		},
+		{
+			"key": "p-groupElement",
+			"value": ""
+		},
+		{
+			"key": "p-userCreation",
+			"value": ""
+		},
+		{
+			"key": "p-consolidationType",
+			"value": ""
+		},
+		{
+			"key": "p-page",
+			"value": ""
+		},
+		{
+			"key": "p-size",
+			"value": ""
+		},
+		{
+			"key": "r-ruleId",
+			"value": ""
+		},
+		{
+			"key": "p-ruleId",
+			"value": ""
+		}
+	]
+}
