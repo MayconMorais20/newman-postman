@@ -15,7 +15,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.environment.set('URL', 'https://jsonplaceholder.typicode.com')"
+									"pm.environment.set('URL', 'https://jsonplaceholder.typicode.com')\r",
+									"pm.environment.set('TOKEN', 'NOVO VALOR')"
 								],
 								"type": "text/javascript"
 							}
