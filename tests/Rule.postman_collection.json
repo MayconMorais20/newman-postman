@@ -9,10 +9,99 @@
 			"name": "__SETUP TOKEN",
 			"item": [
 				{
-					"name": "SET TOKEN-UNAUTHORIZED",
+					"name": "SET TOKEN-UNAUTHORIZED Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-UNAUTHORIZED', pm.response.json().access_token)\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set('TOKEN-UNAUTHORIZED', \"\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "authority",
+								"value": "rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "content-length",
+								"value": "0"
+							},
+							{
+								"key": "sec-ch-ua",
+								"value": "\" Not;A Brand\";v=\"99\", \"Google Chrome\";v=\"97\", \"Chromium\";v=\"97\""
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "authorization",
+								"value": "Basic YjUyNzE3YzI4ZDk1NDFiMDg1OTI1YTNjMDQ0ZjQ5OTA6bnVsbA=="
+							},
+							{
+								"key": "sec-ch-ua-mobile",
+								"value": "?0"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36"
+							},
+							{
+								"key": "sec-ch-ua-platform",
+								"value": "\"Windows\""
+							},
+							{
+								"key": "source",
+								"value": "FRONT"
+							},
+							{
+								"key": "origin",
+								"value": "https://rsk-portal-dsv.riskpack.com.br"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-origin"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://rsk-portal-dsv.riskpack.com.br/"
+							},
+							{
+								"key": "accept-language",
+								"value": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7"
+							},
+							{
+								"key": "cookie",
+								"value": "_ga=GA1.3.240716375.1641329645"
+							}
+						],
 						"url": {
 							"raw": "{{RSK-PORTAL}}/oauth/token?grant_type=password&username=teste12@mailinator.com&password=Neurotech@12&phoneNumber=null&redirect_uri=https%3A%2F%2Frsk-portal-dsv.riskpack.com.br%2F%23%2Fredirect-authorization",
 							"host": [
