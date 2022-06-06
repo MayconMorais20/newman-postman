@@ -10,7 +10,7 @@
     "api-bill-tag-rule": "newman run tests/Rule.postman_collection.json --environment tests/DSV.postman_environment.json --reporters junit --reporter-junit-export newman.xml",
     "verify-dsv-variable": "newman run tests/VERIFICAR-ENV.postman_collection.json --environment tests/DSV.postman_environment.json --reporters junit --reporter-junit-export newman.xml"
   },
-  "author": "Maycon Douglas",
+  "author": "Maycon Douglas.",
   "dependencies": {
     "newman": "^5.3.1"
   }
